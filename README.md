@@ -2,7 +2,7 @@
 
 A pure Python library for technical analysis for the financial markets.
 
-### Implemented indicators include:
+> Implemented indicators include:
 - SMA
 - EMA
 - DEMA
@@ -13,10 +13,10 @@ A pure Python library for technical analysis for the financial markets.
 - Donchian Channel
 - ATR
 
-### Dependencies
+> Dependencies
 - numpy
 - pandas
 - matplotlib.
 
-### Test
+> Try it
 - python3 ta.py
