@@ -4,9 +4,8 @@ SMA: Simple Moving Average.
 
 from datautils import gen_closes
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 
 
 def sma(arg, window):
@@ -21,8 +20,8 @@ def sma(arg, window):
         Series: Simple moving average of arg.
     """
 
-    ma = pd.rolling_mean(arg, window)
-    return Series(data = ma, name = "SMA" + str(window))
+    ma = arg.rolling(window=window,center=False).mean()
+    return Series(data = ma, name = "sma" + str(window))
 
 
 def test_sma(closes):

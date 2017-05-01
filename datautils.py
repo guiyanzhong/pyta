@@ -16,7 +16,7 @@ def gen_ohlc(count=100):
         count (int): How many bars in the generated OHLC data.
 
     Returns:
-        DataFrame: Containing columns of "opens", "highs", "lows" and "closes".
+        DataFrame: Containing columns of "open", "high", "low" and "close".
     """
 
     # Generate ticks.
@@ -38,7 +38,7 @@ def gen_ohlc(count=100):
             c = ticks[i]
     opens.append(o); highs.append(h); lows.append(l); closes.append(c)
     opens.pop(0); highs.pop(0); lows.pop(0); closes.pop(0)
-    return DataFrame({"opens":opens, "highs":highs, "lows":lows, "closes":closes})
+    return DataFrame({"open":opens, "high":highs, "low":lows, "close":closes})
 
 
 def gen_closes(count=100):
@@ -52,7 +52,7 @@ def gen_closes(count=100):
         Series: Series of close prices.
     """
 
-    return Series(data = np.cumsum(np.random.standard_normal(count)) + 500, name = "closes")
+    return Series(data = np.cumsum(np.random.standard_normal(count)) + 500, name = "close")
 
 
 

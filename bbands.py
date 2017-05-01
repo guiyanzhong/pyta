@@ -45,7 +45,7 @@ def bbands(closes, window=20, d=2):
     boll_up = boll_mid + sd * d
     boll_low = boll_mid - sd * d
 
-    return DataFrame({"BOLL_UP":boll_up, "BOLL_MID":boll_mid, "BOLL_LOW":boll_low})
+    return DataFrame({"boll_up":boll_up, "boll_mid":boll_mid, "boll_low":boll_low})
 
 
 def test_bbands(closes):

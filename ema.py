@@ -4,9 +4,8 @@ EMA: Exponential Moving Average.
 
 from datautils import gen_closes
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 
 
 def ema(arg, window):
@@ -27,7 +26,7 @@ def ema(arg, window):
     for i in range(1, len(arg)):
         ema.append(arg[i] * w + ema[-1] * (1.0 - w))
 
-    return Series(data = ema, name="EMA" + str(window))
+    return Series(data = ema, name="ema" + str(window))
 
 
 def test_ema(closes):

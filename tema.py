@@ -4,9 +4,8 @@ TEMA: Triple Exponential Moving Average.
 
 from datautils import gen_closes
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 from ema import ema
 
 
@@ -27,7 +26,7 @@ def tema(arg, window):
     ema3 = ema(ema2, window)
     tema = ema1 * 3 - ema2 * 3 + ema3
 
-    return Series(data = tema, name = "TEMA" + str(window))
+    return Series(data = tema, name = "tema" + str(window))
 
 
 def test_tema(closes):

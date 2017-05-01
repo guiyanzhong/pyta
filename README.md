@@ -13,10 +13,10 @@ A pure Python library for technical analysis for the financial markets.
 - Donchian Channel
 - ATR
 
-> Dependencies
+> Dependencies:
 - numpy
 - pandas
-- matplotlib.
+- matplotlib
 
-> Try it
+> Try it:
 - python3 ta.py

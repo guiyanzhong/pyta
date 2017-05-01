@@ -21,7 +21,7 @@ from dchannel import  dchannel, test_dchannel
 if __name__ == "__main__":
     # Generate test data.
     ohlc = gen_ohlc()
-    closes = ohlc["closes"]
+    closes = ohlc["close"]
     # Test indicators.
     test_atr(ohlc)
     test_sma(closes)

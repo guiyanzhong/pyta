@@ -6,7 +6,7 @@ from datautils import gen_closes
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 
 
 def kama(x, n=10, pow1=2, pow2=30):
@@ -29,7 +29,7 @@ def kama(x, n=10, pow1=2, pow2=30):
     x = Series(x.dropna().values, name = x.name)
 
     change = (x - x.shift(n)).abs()
-    volatility = pd.rolling_sum((x - x.shift(1)).abs(), n)
+    volatility = (x - x.shift(1)).abs().rolling(window=n).sum()
     er = change / volatility
     sc = (er * (2.0 /(pow1 + 1.0) - 2.0 / (pow2 + 1.0)) + 2.0 / (pow2 + 1.0)) ** 2.0
 
@@ -43,7 +43,7 @@ def kama(x, n=10, pow1=2, pow2=30):
             else:
                 kama[i] = kama[i-1] + sc[i] * (x[i] - kama[i-1])
 
-    return Series(data = [np.nan] * nan_count + kama, name = "KAMA_%d,%d,%d" % (n, pow1, pow2))
+    return Series(data = [np.nan] * nan_count + kama, name = "kama(%d,%d,%d)" % (n, pow1, pow2))
 
 
 def test_kama(closes):

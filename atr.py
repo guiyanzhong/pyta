@@ -6,8 +6,7 @@ ATR: Average True Range.
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 from sma import sma
 
 
@@ -15,7 +14,7 @@ def atr(ohlc, window=14):
     """ATR: Average True Range.
 
     Params:
-        ohlc (DataFrame): Time series data of OHLC prices (opens, highs, lows, closes).
+        ohlc (DataFrame): Time series data of OHLC prices (open, high, low, close).
 
         window (int): ATR window size.
 
@@ -23,15 +22,15 @@ def atr(ohlc, window=14):
         Series: Average True Range of ohlc.
     """
 
-    tr1 = ohlc["highs"] - ohlc["lows"]
-    pre_closes = ohlc["closes"].shift(1)
-    tr2 = (ohlc["highs"] - pre_closes).abs()
-    tr3 = (ohlc["highs"] - pre_closes).abs()
+    tr1 = ohlc["high"] - ohlc["low"]
+    pre_closes = ohlc["close"].shift(1)
+    tr2 = (ohlc["high"] - pre_closes).abs()
+    tr3 = (ohlc["high"] - pre_closes).abs()
     tr = np.maximum(np.maximum(tr1, tr2), tr3)
 
     atr = sma(tr, window)
 
-    return Series(data = atr, name = "ATR_%d" % window)
+    return Series(data = atr, name = "atr%d" % window)
 
 
 def test_atr(ohlc):
@@ -41,7 +40,7 @@ def test_atr(ohlc):
     # Plot the price series.
     ax1 = plt.subplot2grid((6,4), (0,0), rowspan=4, colspan=4)
     ax1.grid(True)
-    ax1.plot(ohlc["closes"])
+    ax1.plot(ohlc["close"])
     plt.ylabel("CLOSE")
     plt.title("ATR Chart")
 

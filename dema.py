@@ -4,9 +4,8 @@ DEMA: Double Exponential Moving Average.
 
 from datautils import gen_closes
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from pandas import Series, DataFrame
+from pandas import Series
 from ema import ema
 
 
@@ -26,7 +25,7 @@ def dema(arg, window):
     ema2 = ema(ema1, window)
     dema = ema1 * 2 - ema2
 
-    return Series(data = dema, name = "DEMA" + str(window))
+    return Series(data = dema, name = "dema" + str(window))
 
 
 def test_dema(closes):

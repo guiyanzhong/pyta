@@ -4,11 +4,8 @@ MACD: Moving Average Convergence/Divergence.
 
 from datautils import gen_closes
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
 from pandas import Series, DataFrame
 from ema import ema
-from dema import dema
 
 
 def macd(closes, p1=12, p2=26, p3=9, ma=ema):
