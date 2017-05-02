@@ -6,7 +6,8 @@ ATR: Average True Range.
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import numpy as np
-from pandas import Series
+import pandas as pd
+from pandas import DataFrame
 from sma import sma
 
 
@@ -27,10 +28,12 @@ def atr(ohlc, window=14):
     tr2 = (ohlc["high"] - pre_closes).abs()
     tr3 = (ohlc["high"] - pre_closes).abs()
     tr = np.maximum(np.maximum(tr1, tr2), tr3)
+    tr.name = "tr"
 
     atr = sma(tr, window)
+    atr.name = "atr%d" % window
 
-    return Series(data = atr, name = "atr%d" % window)
+    return pd.concat([tr, atr], axis=1)
 
 
 def test_atr(ohlc):
