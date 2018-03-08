@@ -26,7 +26,7 @@ def kama(x, n=10, pow1=2, pow2=30):
     """
 
     nan_count = x[pd.isnull(x)].size
-    x = Series(x.dropna().values, name = x.name)
+    x = Series(x.dropna().values, name = x.name, index = x.index)
 
     change = (x - x.shift(n)).abs()
     volatility = (x - x.shift(1)).abs().rolling(window=n).sum()
@@ -43,7 +43,7 @@ def kama(x, n=10, pow1=2, pow2=30):
             else:
                 kama[i] = kama[i-1] + sc[i] * (x[i] - kama[i-1])
 
-    return Series(data = [np.nan] * nan_count + kama, name = "kama(%d,%d,%d)" % (n, pow1, pow2))
+    return Series(data = [np.nan] * nan_count + kama, name = "kama(%d,%d,%d)" % (n, pow1, pow2), index = x.index)
 
 
 def test_kama(closes):

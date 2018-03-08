@@ -19,14 +19,14 @@ def ema(arg, window):
     Returns:
         Series: Exponential moving average of arg.
     """
-    arg = Series(arg.dropna().values)
+    arg = Series(arg.dropna().values, index = arg.index)
     ema = []
     w = 2.0 / (window + 1)
     ema.append(arg[0])
     for i in range(1, len(arg)):
         ema.append(arg[i] * w + ema[-1] * (1.0 - w))
 
-    return Series(data = ema, name="ema" + str(window))
+    return Series(data = ema, name = "ema" + str(window), index = arg.index)
 
 
 def test_ema(closes):

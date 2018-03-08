@@ -49,7 +49,7 @@ def test_macd(closes):
     ax2.grid(True)
     ax2.plot(data["macd"])
     ax2.plot(data["signal"])
-    ax2.fill_between(Series(range(data["divergence"].size)), data["divergence"], 0, alpha=0.5)
+    ax2.fill_between(data.index, data["divergence"], 0, alpha=0.5)
     plt.ylabel("MACD")
     plt.setp(ax1.get_xticklabels(), visible=False)
     plt.show()

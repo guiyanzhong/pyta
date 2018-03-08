@@ -26,9 +26,10 @@ def atr(ohlc, window=14):
     tr1 = ohlc["high"] - ohlc["low"]
     pre_closes = ohlc["close"].shift(1)
     tr2 = (ohlc["high"] - pre_closes).abs()
-    tr3 = (ohlc["high"] - pre_closes).abs()
+    tr3 = (ohlc["low"] - pre_closes).abs()
     tr = np.maximum(np.maximum(tr1, tr2), tr3)
     tr.name = "tr"
+    tr.index = ohlc.index
 
     atr = sma(tr, window)
     atr.name = "atr%d" % window

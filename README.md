@@ -7,6 +7,7 @@ A pure Python library for technical analysis for the financial markets.
 - EMA
 - DEMA
 - TEMA
+- WMA
 - KAMA
 - MACD
 - Bollinger Bands
