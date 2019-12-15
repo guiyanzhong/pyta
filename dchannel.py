@@ -5,7 +5,7 @@ DCHANNEL: Donchain Channel.
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.finance import candlestick2_ochl
+from mpl_finance import candlestick2_ochl
 from pandas import DataFrame
 
 
