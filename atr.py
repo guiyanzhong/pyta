@@ -20,7 +20,7 @@ def atr(ohlc, window=14):
         window (int): ATR window size.
 
     Returns:
-        Series: Average True Range of ohlc.
+        DataFrame: True Range & Average True Range of ohlc.
     """
 
     tr1 = ohlc["high"] - ohlc["low"]

@@ -16,6 +16,7 @@ from tema import tema, test_tema
 from wma import wma, test_wma
 from kama import kama, test_kama
 from macd import macd, test_macd
+from kd import kd, test_kd
 from bbands import  bbands, test_bbands
 from dchannel import  dchannel, test_dchannel
 
@@ -33,5 +34,6 @@ if __name__ == "__main__":
     test_wma(closes)
     test_kama(closes)
     test_macd(closes)
+    test_kd(ohlc)
     test_bbands(closes)
     test_dchannel(ohlc)
