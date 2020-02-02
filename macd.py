@@ -2,6 +2,7 @@
 MACD: Moving Average Convergence/Divergence.
 """
 
+import pyximport; pyximport.install()
 from datautils import gen_closes
 import matplotlib.pyplot as plt
 from pandas import Series, DataFrame

@@ -3,6 +3,7 @@ ATR: Average True Range.
 """
 
 
+import pyximport; pyximport.install()
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import numpy as np

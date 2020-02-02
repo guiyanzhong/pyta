@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 
 
-def gen_ohlc(count=100):
+def gen_ohlc(int count=100):
     """
     Generate random walk OHLC price data.
 
@@ -20,8 +20,9 @@ def gen_ohlc(count=100):
     """
 
     # Generate ticks.
-    bar_tick_count = 100
-    ticks = Series(data = np.cumsum(np.random.standard_normal(count * bar_tick_count)) + 500, name = "ticks")
+    cdef int bar_tick_count = 100
+    cdef int i, j
+    ticks = np.cumsum(np.random.standard_normal(count * bar_tick_count)) + 500.0
     # Generate OHLC from ticks.
     j = -1; o = ticks[0]; h = o; l = o; c = o
     opens = []; highs = []; lows = []; closes = []
@@ -52,7 +53,7 @@ def gen_closes(count=100):
         Series: Series of close prices.
     """
 
-    return Series(data = np.cumsum(np.random.standard_normal(count)) + 500, name = "close")
+    return Series(data = np.cumsum(np.random.standard_normal(count)) + 500.0, name = "close")
 
 
 

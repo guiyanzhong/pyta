@@ -2,6 +2,7 @@
 DCHANNEL: Donchain Channel.
 """
 
+import pyximport; pyximport.install()
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import pandas as pd

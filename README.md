@@ -9,6 +9,7 @@ A pure Python library for technical analysis for the financial markets.
 - TEMA
 - WMA
 - KAMA
+- KD
 - MACD
 - Bollinger Bands
 - Donchian Channel

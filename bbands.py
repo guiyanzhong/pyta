@@ -2,6 +2,7 @@
 BBANDS: Bollinger Bands.
 """
 
+import pyximport; pyximport.install()
 from datautils import gen_closes
 import math
 import matplotlib.pyplot as plt

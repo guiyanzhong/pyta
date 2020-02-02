@@ -2,6 +2,7 @@
 WMA: Weighted Moving Average.
 """
 
+import pyximport; pyximport.install()
 from datautils import gen_closes
 import matplotlib.pyplot as plt
 import numpy as np
