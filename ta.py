@@ -11,7 +11,7 @@ import numpy as np
 import datautils
 import atr
 import sma
-import ema
+import test_ema
 import dema
 import tema
 import wma
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # Test indicators.
     atr.test_atr(ohlc)
     sma.test_sma(closes)
-    ema.test_ema(closes)
+    test_ema.test_ema(closes)
     dema.test_dema(closes)
     tema.test_tema(closes)
     wma.test_wma(closes)
