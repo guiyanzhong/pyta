@@ -1,8 +1,9 @@
 # pyta
 
-A pure Python library for technical analysis for the financial markets.
+Financial market technical analysis indicators implemented in Python.
 
 > Implemented indicators include:
+
 - SMA
 - EMA
 - DEMA
@@ -16,12 +17,14 @@ A pure Python library for technical analysis for the financial markets.
 - ATR
 
 > Dependencies:
+
 - cython
 - numpy
 - pandas
 - matplotlib
 
 > Try it:
+
 - python3 ta.py
 
 > Performance:
@@ -29,7 +32,7 @@ A pure Python library for technical analysis for the financial markets.
 Action              | Time
 --------------------|---------------
 Generate 10000 bars | 0.351827s
-Calculate ATR       | 0.197119s
+Calculate ATR       | 0.00291061s
 Calculate BOLL      | 1.78936s
 Calculate DCHANNEL  | 0.00190716s
 Calculate SMA       | 0.000572467s

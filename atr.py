@@ -24,11 +24,11 @@ def atr(ohlc, window=14):
         DataFrame: True Range & Average True Range of ohlc.
     """
 
-    tr1 = ohlc["high"] - ohlc["low"]
-    pre_closes = ohlc["close"].shift(1)
-    tr2 = (ohlc["high"] - pre_closes).abs()
-    tr3 = (ohlc["low"] - pre_closes).abs()
-    tr = np.maximum(np.maximum(tr1, tr2), tr3)
+    tr1 = ohlc["high"].values - ohlc["low"].values
+    pre_closes = ohlc["close"].shift(1).values
+    tr2 = np.absolute(ohlc["high"].values - pre_closes)
+    tr3 = np.absolute(ohlc["low"].values - pre_closes)
+    tr = pd.Series(np.maximum(np.maximum(tr1, tr2), tr3))
     tr.name = "tr"
     tr.index = ohlc.index
 
