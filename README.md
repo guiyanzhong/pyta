@@ -33,13 +33,13 @@ Action              | Time
 --------------------|---------------
 Generate 10000 bars | 0.351827s
 Calculate ATR       | 0.00291061s
-Calculate BOLL      | 1.78936s
+Calculate BOLL      | 2.05958s
 Calculate DCHANNEL  | 0.00190716s
-Calculate SMA       | 0.000572467s
-Calculate EMA       | 0.00386355s
-Calculate DEMA      | 0.00800772s
-Calculate TEMA      | 0.0122036s
+Calculate SMA       | 0.00063386s
+Calculate EMA       | 0.000709295s
+Calculate DEMA      | 0.00164652s
+Calculate TEMA      | 0.00260744s
 Calculate WMA       | 0.829549s
 Calculate KAMA      | 0.242825s
 Calculate KD        | 0.0434763s
-Calculate MACD      | 0.0120981s
+Calculate MACD      | 0.00281951s
