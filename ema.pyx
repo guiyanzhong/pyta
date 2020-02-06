@@ -4,6 +4,7 @@ EMA: Exponential Moving Average.
 
 import numpy as np
 from pandas import Series
+from libc.math cimport isnan
 
 
 def ema(arg, int window):
@@ -25,7 +26,7 @@ def ema(arg, int window):
     cdef int first_value_processed = 0
 
     for i in range(len(values)):
-        if values[i] != values[i]:
+        if isnan(values[i]):
             ema[i] = values[i]
         else:
             if first_value_processed == 0:
