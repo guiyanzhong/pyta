@@ -12,7 +12,7 @@ from pandas import Series, DataFrame
 from sma import sma
 
 
-def bbands(closes, window=20, d=2):
+def bbands(closes, window=20, d=2.0):
     """
     BBANDS: Bollinger Bands.
 
@@ -32,16 +32,17 @@ def bbands(closes, window=20, d=2):
         Calculate (moving) standard deviation of the closing price series,
         which will be used in calculating Bollinger Bands.
         """
-        sd = [np.nan] * min(closes.size, window - 1)
-        for i in range(window - 1, closes.size):
+        c = closes.values
+        sd = [np.nan] * min(c.size, window - 1)
+        for i in range(window - 1, c.size):
             sum = 0.0
             m = boll_mid[i]
             for j in range(window):
-                sum += (closes[i - j] - m) ** 2;
+                sum += (c[i - j] - m) ** 2;
             sd.append(math.sqrt(sum / window))
-        return Series(data = sd, name = "sd")
+        return np.array(sd)
 
-    boll_mid = sma(closes, window)
+    boll_mid = sma(closes, window).values
     sd = calc_sd()
     boll_up = boll_mid + sd * d
     boll_low = boll_mid - sd * d
@@ -51,7 +52,7 @@ def bbands(closes, window=20, d=2):
 
 def test_bbands(closes):
     """BBANDS test function."""
-    bb = bbands(closes, 20, 2)
+    bb = bbands(closes, 20, 2.0)
     data = pd.concat([DataFrame(closes), bb], axis=1)
     # print(data)
     data.plot(title = "BBANDS Chart")

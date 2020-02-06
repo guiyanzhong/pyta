@@ -33,7 +33,7 @@ Action              | Time
 --------------------|---------------
 Generate 10000 bars | 0.351827s
 Calculate ATR       | 0.00291061s
-Calculate BOLL      | 2.05958s
+Calculate BOLL      | 0.143516s
 Calculate DCHANNEL  | 0.00190716s
 Calculate SMA       | 0.00063386s
 Calculate EMA       | 0.000709295s
