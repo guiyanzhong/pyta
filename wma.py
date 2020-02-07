@@ -22,6 +22,7 @@ def wma(arg, window):
         Series: Weighted moving average of arg.
     """
 
+    values = arg.values
     wma = []
     bar_count = len(arg)
     nan_count = window - 1
@@ -33,7 +34,7 @@ def wma(arg, window):
     for i in range(window-1, bar_count):
         sum = 0
         for j in range(window):
-            sum += arg[i - j] * (window - j)
+            sum += values[i - j] * (window - j)
         wma.append(sum / div);
 
     return Series(data = wma, name="wma" + str(window), index = arg.index)

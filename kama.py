@@ -31,18 +31,19 @@ def kama(x, n=10, pow1=2, pow2=30):
 
     change = (x - x.shift(n)).abs()
     volatility = (x - x.shift(1)).abs().rolling(window=n).sum()
-    er = change / volatility
-    sc = (er * (2.0 /(pow1 + 1.0) - 2.0 / (pow2 + 1.0)) + 2.0 / (pow2 + 1.0)) ** 2.0
+    er = (change / volatility).values
+    sc = (er * (2.0 / (pow1 + 1.0) - 2.0 / (pow2 + 1.0)) + 2.0 / (pow2 + 1.0)) ** 2.0
 
+    values = x.values
     kama = [np.nan] * sc.size
     first_value = True
     for i in range(len(kama)):
         if not pd.isnull(sc[i]):
             if first_value:
-                kama[i] = x[i]
+                kama[i] = values[i]
                 first_value = False
             else:
-                kama[i] = kama[i-1] + sc[i] * (x[i] - kama[i-1])
+                kama[i] = kama[i-1] + sc[i] * (values[i] - kama[i-1])
 
     return Series(data = [np.nan] * nan_count + kama, name = "kama(%d,%d,%d)" % (n, pow1, pow2), index = x.index)
 
