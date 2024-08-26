@@ -6,7 +6,7 @@ import pyximport; pyximport.install()
 from datautils import gen_ohlc
 import matplotlib.pyplot as plt
 import pandas as pd
-from mpl_finance import candlestick2_ochl
+import mplfinance as mpf
 from pandas import DataFrame
 
 
@@ -30,13 +30,15 @@ def dchannel(ohlc, window):
 
 def test_dchannel(ohlc):
     """DCHANNEL test function."""
+    # Add a date index for mplfinance
+    ohlc.index = pd.date_range("2024-08-01", periods=len(ohlc))
+    # Calculate DCHANNEL
     dchannel10 = dchannel(ohlc, 10)
-    data = pd.concat([ohlc, dchannel10], axis=1)
-    # print(data)
+    # Plot
     ax1 = plt.subplot2grid((6,4), (0,0), rowspan=6, colspan=6)
     ax1.grid(True)
-    candlestick2_ochl(ax1, ohlc["open"], ohlc["close"], ohlc["high"], ohlc["low"], width=0.7, colorup="r", colordown="g")
-    ax1.plot(dchannel10)
+    dc = mpf.make_addplot(dchannel10, ax=ax1)
+    mpf.plot(ohlc, type='candle', style='charles', addplot=dc, ax=ax1)
     plt.title("DCHANNEL Chart")
     plt.show()
 
